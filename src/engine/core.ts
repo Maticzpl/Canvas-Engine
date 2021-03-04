@@ -13,5 +13,13 @@ export function setActiveScene(scene :Scene){
 export function init() {
     Rendering.init();
 
-    setInterval(Rendering.render,1000/fps);
+    setInterval(update,1000/fps);
+}
+
+function update(){
+    if(activeScene?.onUpdate)
+        activeScene.onUpdate();
+    activeScene?.update();
+
+    Rendering.render();
 }
