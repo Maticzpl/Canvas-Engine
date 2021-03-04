@@ -1,0 +1,22 @@
+{ 
+  "name": "canvas-engine",
+  "author":{    
+    "name": "Maticzpl",
+    "email": "czerneckimateusz0@gmail.com"
+  },
+  "version": "0.0.1",
+  "description": "A simple TypeScript game engine for HTML5 Canvas element",
+  "bugs":"https://github.com/Maticzpl/Canvas-Engine/issues",
+  "dependencies": {
+    "typescript": "^4.2.2",
+    "webpack": "^5.24.3",
+    "webpack-cli": "^4.5.0"
+  },
+  "devDependencies": {
+    "ts-loader": "^8.0.17"
+  },
+  "scripts": {
+    "compile": "webpack",
+    "build":"build.bat"
+  }
+}
