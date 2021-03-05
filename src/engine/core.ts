@@ -1,6 +1,7 @@
 import * as Rendering from "./renderer";
 import * as Config from "./../engineConfig";
 import {Scene} from "./scene";
+import {KeyboardInput} from "./../engine/input";
 
 const fps = 60;
 
@@ -13,6 +14,7 @@ export function setActiveScene(scene :Scene){
 
 export function init() {
     Rendering.init();
+    KeyboardInput.init();
 
     setInterval(update,1000/fps);
 }

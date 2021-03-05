@@ -18,17 +18,31 @@ export class Drawable implements Object2D {
         this.components = [];
         this.ctx = ctx;
         this.use_local_coordinates = false;
+        this.origin_in_center = false;
     }
     onUpdate(){
         
     }
     //Called before the object is rendered
-    onRender(){ 
+    onRender(){         
         this.ctx = ctx;
-        this.ctx.translate(this.origin.position.x,this.origin.position.y);
-        this.ctx.scale(this.origin.scale.x,this.origin.scale.y);
-        this.ctx.rotate(this.origin.rotation * Math.PI / 180);
 
+        if (this.origin_in_center) {
+            this.ctx.translate(-(this.origin.scale.x/2),-(this.origin.scale.y/2));
+        }
+        this.ctx.translate(this.origin.position.x,this.origin.position.y);
+            
+        if (this.origin_in_center) {
+            this.ctx.translate(this.origin.scale.x/2,this.origin.scale.y/2);
+        }        
+           this.ctx.rotate(this.origin.rotation * Math.PI / 180);
+            
+        if (this.origin_in_center) {
+            this.ctx.translate(-(this.origin.scale.x/2),-(this.origin.scale.y/2));
+        }    
+        this.ctx.scale(this.origin.scale.x,this.origin.scale.y);      
+
+        
     }
 
     afterRender(){        
@@ -45,4 +59,5 @@ export class Drawable implements Object2D {
     components: Array<Object2D>;
     ctx: CanvasRenderingContext2D;
     use_local_coordinates: boolean;
+    origin_in_center: boolean;
 }
