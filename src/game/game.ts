@@ -5,7 +5,7 @@ import { Vector2 } from "../engine/base_types";
 
 import {Object2D} from "./../engine/object2D";
 import {Sprite} from "./../engine/sprite";
-import {Shape} from "./../engine/shape";
+import {Outline, Shape} from "./../engine/shape";
 
 //create scene
 let level = new Scene();
@@ -40,6 +40,7 @@ window.onload = ()=>{
     shape.origin.position = new Vector2(0,300);
     shape.origin.scale = new Vector2(500,300);
     shape.origin.rotation = 270;
+    shape.outline = new Outline(3,'red');
     
 };
 //runs every tick
