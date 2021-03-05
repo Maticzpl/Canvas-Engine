@@ -37,9 +37,10 @@ window.onload = ()=>{
     sprite.origin.position = new Vector2(150,100);
     sprite.origin.scale = new Vector2(500,300);
 
-    shape.origin.position = new Vector2(0,1);
-    shape.origin.scale = new Vector2(1,1);
+    shape.origin.position = new Vector2(0,300);
+    shape.origin.scale = new Vector2(500,300);
     shape.origin.rotation = 270;
+    
     
 };
 //runs every tick

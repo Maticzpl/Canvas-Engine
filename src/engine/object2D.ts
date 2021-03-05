@@ -32,6 +32,8 @@ export class Drawable implements Object2D {
 
     afterRender(){        
         this.components.forEach(component => {
+            this.ctx.scale(1/this.origin.scale.x,1/this.origin.scale.y);
+            
             component.onRender();
         });
     }
