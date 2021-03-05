@@ -44,8 +44,8 @@ window.onload = ()=>{
     shape.origin.rotation = 270;
     shape.outline = new Outline(3,'red');
 
-	//shape.origin_in_center = true;
-	//sprite.origin_in_center = true;
+	shape.origin_in_center = true;
+	sprite.origin_in_center = true;
     
 };
 //runs every tick
