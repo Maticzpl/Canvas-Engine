@@ -1,49 +1,43 @@
 import {Vector2,Transform} from "./base_types";
+import {ctx} from "./renderer";
 
 export interface Object2D {
     //Happens every tick
     onUpdate() :void; 
     //Called before the object is rendered
     onRender() :void; 
+    afterRender() :void; 
 
     origin: Transform;    
     components: Array<Object2D>;
 }
 
-export class Sprite implements Object2D {
-    constructor(imageUri: string){
-        this.origin = new Transform(undefined,undefined,new Vector2(100,100));
+export class Drawable implements Object2D {
+    constructor(){
+        this.origin = new Transform();
         this.components = [];
-
-
-        var img = new Image();
-        img.src = imageUri;
-        this.image = img;
-    }
-
-    setContext(ctx: CanvasRenderingContext2D){
         this.ctx = ctx;
     }
-
-    onRender(){
-        this.ctx?.rotate(this.origin.rotation * Math.PI / 180);
-
-        
-        this.ctx?.drawImage(this.image,
-            this.origin.position.x,
-            this.origin.position.y,
-            this.origin.position.x + this.origin.scale.x,
-            this.origin.position.y + this.origin.scale.y
-        );
-
-        this.ctx?.rotate(-(this.origin.rotation * Math.PI / 180));
-    }
     onUpdate(){
+        
+    }
+    //Called before the object is rendered
+    onRender(){ 
+        this.ctx = ctx;
+        this.ctx.translate(this.origin.position.x,this.origin.position.y);
+        this.ctx.scale(this.origin.scale.x,this.origin.scale.y);
+        this.ctx.rotate(this.origin.rotation * Math.PI / 180);
 
     }
 
-    image: any;
-    ctx: CanvasRenderingContext2D | undefined;
+    afterRender(){        
+        this.components.forEach(component => {
+            component.onRender();
+        });
+    }
+
+
     origin: Transform;    
     components: Array<Object2D>;
+    ctx: CanvasRenderingContext2D;
 }

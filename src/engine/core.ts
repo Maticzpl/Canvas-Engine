@@ -4,6 +4,7 @@ import {Scene} from "./scene";
 
 const fps = 60;
 
+
 export var activeScene : Scene | undefined
 
 export function setActiveScene(scene :Scene){

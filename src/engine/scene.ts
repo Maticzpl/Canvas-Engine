@@ -1,4 +1,5 @@
-import {Object2D, Sprite} from "./object2D"
+import {Drawable, Object2D} from "./object2D"
+import {ctx} from "./renderer";
 
 export class Scene{
     constructor(){
@@ -16,17 +17,13 @@ export class Scene{
 
     render(){
         this.members.forEach(child=>{
-            if (child instanceof Sprite && this.ctx) {
-                child.setContext(this.ctx);
-            }
+            ctx.save();
             child.onRender();
+            child.afterRender();
+            ctx.restore();
         });
     }   
 
-    setContext(ctx: CanvasRenderingContext2D){
-        this.ctx = ctx;
-    }
     onUpdate: Function | undefined;
-    ctx: CanvasRenderingContext2D | undefined;
     members: Array<Object2D>;
 }
