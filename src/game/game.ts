@@ -41,9 +41,8 @@ window.onload = ()=>{
     shape.origin.scale = new Vector2(500,300);
     shape.origin.rotation = 270;
     
-    
 };
 //runs every tick
 level.onUpdate = ()=>{
-
+    sprite.origin.position.x += 1;
 };

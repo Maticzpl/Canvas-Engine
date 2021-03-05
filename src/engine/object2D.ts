@@ -17,6 +17,7 @@ export class Drawable implements Object2D {
         this.origin = new Transform();
         this.components = [];
         this.ctx = ctx;
+        this.use_local_coordinates = false;
     }
     onUpdate(){
         
@@ -32,7 +33,8 @@ export class Drawable implements Object2D {
 
     afterRender(){        
         this.components.forEach(component => {
-            this.ctx.scale(1/this.origin.scale.x,1/this.origin.scale.y);
+            if (component instanceof Drawable && !component.use_local_coordinates)
+                this.ctx.scale(1/this.origin.scale.x,1/this.origin.scale.y);
             
             component.onRender();
         });
@@ -42,4 +44,5 @@ export class Drawable implements Object2D {
     origin: Transform;    
     components: Array<Object2D>;
     ctx: CanvasRenderingContext2D;
+    use_local_coordinates: boolean;
 }
