@@ -1,6 +1,10 @@
 import {Vector2,Transform} from "./base_types";
 import {ctx} from "./renderer";
 
+/**
+ * Base for component polymorphism
+ * Implement this interface when creating a component.
+ */
 export interface Object2D {
     //Happens every tick
     onUpdate() :void; 
@@ -12,6 +16,10 @@ export interface Object2D {
     components: Array<Object2D>;
 }
 
+/**
+ * Base for components that want to render something.
+ * Extend this class for ctx access and origin transform handeling.
+ */
 export class Drawable implements Object2D {
     constructor(){
         this.origin = new Transform();
@@ -20,10 +28,17 @@ export class Drawable implements Object2D {
         this.use_local_coordinates = false;
         this.origin_in_center = false;
     }
+    /**
+     * Do not call externaly, only overwrite it
+     */
     onUpdate(){
         
     }
-    //Called before the object is rendered
+    
+    /**
+     * Do not call externaly, only overwrite it
+     * Called before the object is rendered
+     */
     onRender(){         
         this.ctx = ctx;
 
@@ -45,6 +60,10 @@ export class Drawable implements Object2D {
         
     }
 
+    /**
+     * Do not call externaly, only overwrite it
+     * Called after the object is rendered
+     */
     afterRender(){        
         this.components.forEach(component => {
             if (component instanceof Drawable && !component.use_local_coordinates)

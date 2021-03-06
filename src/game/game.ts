@@ -22,13 +22,12 @@ let shape = new Shape(
     ]
     ,'#F005'
 );
-let frame = 0;
 window.onload = ()=>{
     //init engine
     CE.init();
     //bind scene
     CE.setActiveScene(level);
-
+    
     //add sprite to the level
     level.members.push(sprite);
 
@@ -36,17 +35,16 @@ window.onload = ()=>{
     sprite.components.push(shape);
 
     //object transform
-    sprite.origin.position = new Vector2(150,100);
+    sprite.origin.position = new Vector2(500,300);
     sprite.origin.scale = new Vector2(500,300);
 
-    shape.origin.position = new Vector2(0,0);
+    shape.origin.position = new Vector2(250,150);
     shape.origin.scale = new Vector2(300,500);
     shape.origin.rotation = 270;
     shape.outline = new Outline(3,'red');
 
 	shape.origin_in_center = true;
 	sprite.origin_in_center = true;
-    
 };
 //runs every tick
 level.onUpdate = ()=>{

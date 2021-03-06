@@ -1,6 +1,9 @@
 import {Drawable} from "./object2D";
 import {Vector2,Transform} from "./base_types";
 
+/**
+ * Rectangle image
+ */
 export class Sprite extends Drawable {
     constructor(imageUri: string){
         super();
@@ -11,6 +14,10 @@ export class Sprite extends Drawable {
         this.image = img;
     }
 
+    /**
+     * Do not call externaly, only overwrite it
+     * Called before the object is rendered
+     */
     onRender(){
         super.onRender();
 

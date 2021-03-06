@@ -1,6 +1,9 @@
 import {Drawable} from "./object2D";
 import {Vector2,Transform} from "./base_types";
 
+/**
+ * Defines a shepe's outline
+ */
 export class Outline {
     constructor(width: number,color: string){
         this.color = color;
@@ -10,6 +13,10 @@ export class Outline {
     color: string;
 }
 
+/**
+ * Solid color drawable element
+ * Use for custom polygon shapes.
+ */
 export class Shape extends Drawable {
     constructor(verticies: Vector2[], color?: string,outline?: Outline){
         super();
@@ -20,6 +27,10 @@ export class Shape extends Drawable {
         this.outline = outline ? outline : new Outline(0,'black');
     }
 
+    /**
+     * Do not call externaly, only overwrite it
+     * Called before the object is rendered
+     */
     onRender(){
         super.onRender();
        
