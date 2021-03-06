@@ -15,7 +15,7 @@ export class Sprite extends Drawable {
     }
 
     /**
-     * Do not call externaly, only overwrite it
+     * Do not call externaly
      * Called before the object is rendered
      */
     onRender(){

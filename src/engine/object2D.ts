@@ -2,8 +2,8 @@ import {Vector2,Transform} from "./base_types";
 import {ctx} from "./renderer";
 
 /**
- * Base for component polymorphism
- * Implement this interface when creating a component.
+ * Base for children polymorphism
+ * Implement this interface when creating a component / child.
  */
 export interface Object2D {
     //Happens every tick
@@ -13,30 +13,30 @@ export interface Object2D {
     afterRender() :void; 
 
     origin: Transform;    
-    components: Array<Object2D>;
+    children: Array<Object2D>;
 }
 
 /**
- * Base for components that want to render something.
+ * Base for children that want to render something.
  * Extend this class for ctx access and origin transform handeling.
  */
 export class Drawable implements Object2D {
     constructor(){
         this.origin = new Transform();
-        this.components = [];
+        this.children = [];
         this.ctx = ctx;
         this.use_local_coordinates = false;
         this.origin_in_center = false;
     }
     /**
-     * Do not call externaly, only overwrite it
+     * Do not call externaly
      */
     onUpdate(){
         
     }
     
     /**
-     * Do not call externaly, only overwrite it
+     * Do not call externaly
      * Called before the object is rendered
      */
     onRender(){         
@@ -61,21 +61,21 @@ export class Drawable implements Object2D {
     }
 
     /**
-     * Do not call externaly, only overwrite it
+     * Do not call externaly
      * Called after the object is rendered
      */
     afterRender(){        
-        this.components.forEach(component => {
-            if (component instanceof Drawable && !component.use_local_coordinates)
+        this.children.forEach(child => {
+            if (child instanceof Drawable && !child.use_local_coordinates)
                 this.ctx.scale(1/this.origin.scale.x,1/this.origin.scale.y);
             
-            component.onRender();
+                child.onRender();
         });
     }
 
 
     origin: Transform;    
-    components: Array<Object2D>;
+    children: Array<Object2D>;
     ctx: CanvasRenderingContext2D;
     use_local_coordinates: boolean;
     origin_in_center: boolean;

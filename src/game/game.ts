@@ -32,7 +32,7 @@ window.onload = ()=>{
     level.members.push(sprite);
 
     //make the shape child of the sprite
-    sprite.components.push(shape);
+    sprite.children.push(shape);
 
     //object transform
     sprite.origin.position = new Vector2(500,300);
