@@ -16,4 +16,7 @@ The TypeScript config is the `tsconfig.json` file.
 For more compilation options check the `webpack.config.js` file.  
 The Project config is `src/engineConfig.ts`.  
 
-# **This engine is under development**
+# Note: **This engine is under development**
+This engine in its current state is very bare bones.
+It's recommended to use it yet.
+The repo was made public for you to follow its development
