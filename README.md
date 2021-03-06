@@ -1,4 +1,4 @@
-# Canvas Engine
+# Canvas Engine (temporary name)
 ### Made by Maticzpl
 
 # Getting Started and Building
