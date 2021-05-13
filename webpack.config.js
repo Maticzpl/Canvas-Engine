@@ -1,15 +1,22 @@
 const path = require('path');
 
 module.exports = {
-  mode: "production", // "production" | "development" 
-  entry: './src/game/game.ts',
+  mode: "development", // "production" | "development" 
+  entry: '../game/game.ts',
   devtool: 'inline-source-map',
   module: {
     rules: [
       {
         test: /\.tsx?$/,
-        use: 'ts-loader',
         exclude: /node_modules/,
+        use: [
+          {
+            loader: 'ts-loader',
+            options: {
+              configFile: path.resolve('./tsconfig.json'),
+            }
+          }
+        ]
       },
     ],
   },
@@ -18,6 +25,6 @@ module.exports = {
   },
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, '../dist'),
   },
 };

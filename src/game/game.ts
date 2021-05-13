@@ -1,13 +1,18 @@
-import * as CE from "./../engine/core";
+//This will produce errors
+//Move the game folder outside the submodule and it should be working
 
-import {Scene} from "./../engine/scene";
-import { Vector2 } from "../engine/base_types";
+//uncomment after copying
+/*
+import * as CE from "../Canvas-Engine/src/engine/core";
 
-import {Object2D} from "./../engine/object2D";
-import {Sprite} from "./../engine/sprite";
-import {Outline, Shape} from "./../engine/shape";
+import {Scene} from "../Canvas-Engine/src/engine/scene";
+import { Vector2 } from "../Canvas-Engine/src/engine/base_types";
 
-import {KeyboardInput} from "./../engine/input";
+import {Object2D} from "../Canvas-Engine/src/engine/object2D";
+import {Sprite} from "../Canvas-Engine/src/engine/sprite";
+import {Outline, Shape} from "../Canvas-Engine/src/engine/shape";
+
+import {KeyboardInput} from "../Canvas-Engine/src/engine/input";
 
 //create scene
 let level = new Scene();
@@ -62,3 +67,5 @@ level.onUpdate = ()=>{
 		shape.origin.rotation += 1;
 	
 }; 
+
+*/

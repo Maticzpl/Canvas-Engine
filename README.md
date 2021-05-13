@@ -2,13 +2,14 @@
 ### Made by Maticzpl
 
 # Getting Started and Building
-1. Clone the repository.
+1. Add this repo as a submodule to your own repo.
+2. Open the terminal and change the current directory to inside the submodule.
 2. Install all the packages with `npm install`.
-3. Run `npm run build` in the terminal to build the project.
-4. The built project will be in dist folder
+3. Run `npm run build` build the project.
+4. The built project will be in dist folder outside the submodule
 
 # Coding
-All your game files are in `src/game/`  
+Keep the engine as a submodule in your repo. Copy the template folder Canvas-Engine/src/game outside the submodule. 
 `game.ts` is the main script file, don't change its name
 
 # Configs
