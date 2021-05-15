@@ -8,6 +8,7 @@
       "dom",
       "es6"
     ],
-    "allowJs": true
+    "allowJs": true,
+    "downlevelIteration": true
   }
 }
