@@ -19,8 +19,10 @@ export function init(){
  * calls all the onRender methods
  */
 export function render(){  
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    if(Config.resizeViewport){
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
         
     activeScene?.render();
 }

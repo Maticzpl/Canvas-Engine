@@ -13,7 +13,7 @@ REM DEL ".\build\game\*.js.map" > NUL
 REM 
 REM echo Compiling...
 REM CALL tsc
-CALL COPY "..\game\index.html" "..\dist\index.html" > NUL
+REM CALL COPY "..\game\index.html" "..\dist\index.html" > NUL
 
 echo Compilation complete
 
