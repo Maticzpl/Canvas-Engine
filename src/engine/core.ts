@@ -1,7 +1,7 @@
 import * as Rendering from "./renderer";
 import * as Config from "./../engineConfig";
 import {Scene} from "./scene";
-import {KeyboardInput} from "./../engine/input";
+import {KeyboardInput, MouseInput} from "./../engine/input";
 
 
 export var activeScene : Scene | undefined
@@ -18,6 +18,7 @@ export function setActiveScene(scene :Scene){
 export function init() {
     Rendering.init();
     KeyboardInput.init();
+    MouseInput.init();
 
     setInterval(update,1000/Config.fps);
 }

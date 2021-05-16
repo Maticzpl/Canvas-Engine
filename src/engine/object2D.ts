@@ -69,7 +69,7 @@ export class Drawable implements Object2D {
             if (child instanceof Drawable && !child.use_local_coordinates)
                 this.ctx.scale(1/this.origin.scale.x,1/this.origin.scale.y);
             
-                child.onRender();
+            child.onRender();
         });
     }
 

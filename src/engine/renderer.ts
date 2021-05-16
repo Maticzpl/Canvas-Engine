@@ -2,7 +2,7 @@ import * as Config from "./../engineConfig";
 import {activeScene} from "./core";
 
 export var ctx :CanvasRenderingContext2D;
-var canvas :HTMLCanvasElement;
+export var canvas :HTMLCanvasElement;
 
 /**
  * Creates the canvas context.
@@ -23,6 +23,7 @@ export function render(){
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
     }
+
     ctx.clearRect(0,0,canvas.width,canvas.height);
     activeScene?.render();
 }

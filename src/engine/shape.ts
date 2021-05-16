@@ -23,8 +23,8 @@ export class Shape extends Drawable {
 
         this.verticies = verticies;
 
-        this.color = color ? color : "black";
-        this.outline = outline ? outline : new Outline(0,'black');
+        this.color = color ? color : "white";
+        this.outline = outline ? outline : new Outline(0,'#0000');
     }
 
     /**

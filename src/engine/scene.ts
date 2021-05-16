@@ -1,5 +1,5 @@
 import {Drawable, Object2D} from "./object2D"
-import {ctx} from "./renderer";
+import {ctx,canvas} from "./renderer";
 
 /**
  * Root for all the elements inside your level.
@@ -20,6 +20,7 @@ export class Scene{
     }
 
     render(){
+        
         this.members.forEach(child=>{
             ctx.save();
             child.onRender();
