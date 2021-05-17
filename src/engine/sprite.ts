@@ -1,5 +1,6 @@
 import {Drawable} from "./object2D";
 import {Vector2,Transform} from "./base_types";
+import { ctx } from "./renderer";
 
 /**
  * Rectangle image
@@ -21,7 +22,7 @@ export class Sprite extends Drawable {
     onRender(){
         super.onRender();
 
-        this.ctx.drawImage(this.image,
+        ctx.drawImage(this.image,
             0,
             0,
             1,

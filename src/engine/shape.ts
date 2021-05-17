@@ -1,5 +1,6 @@
 import {Drawable} from "./object2D";
 import {Vector2,Transform} from "./base_types";
+import { ctx } from "./renderer";
 
 /**
  * Defines a shepe's outline
@@ -34,26 +35,26 @@ export class Shape extends Drawable {
     onRender(){
         super.onRender();
        
-        this.ctx.moveTo(this.verticies[0].x,this.verticies[0].y);
-        
+        ctx.beginPath();
+        ctx.moveTo(this.verticies[0].x,this.verticies[0].y);
         for (let i = 1; i < this.verticies.length; i++) {
             const vertex = this.verticies[i];
             
-            this.ctx.lineTo(vertex.x,vertex.y);
+            ctx.lineTo(vertex.x,vertex.y);
         }
-        this.ctx.closePath();
+        ctx.closePath();
 
-        this.ctx.save();
-        this.ctx.resetTransform();
+        ctx.save();
+        ctx.resetTransform();
         
-        this.ctx.fillStyle = this.color;
-        this.ctx.fill();
+        ctx.fillStyle = this.color;
+        ctx.fill();
         
-        this.ctx.lineWidth = this.outline.thickness;
-        this.ctx.strokeStyle = this.outline.color;
-        this.ctx.stroke();        
+        ctx.lineWidth = this.outline.thickness;
+        ctx.strokeStyle = this.outline.color;
+        ctx.stroke();        
 
-        this.ctx.restore();
+        ctx.restore();
 
         
     }

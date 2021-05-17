@@ -24,7 +24,6 @@ export class Drawable implements Object2D {
     constructor(){
         this.origin = new Transform();
         this.children = [];
-        this.ctx = ctx;
         this.use_local_coordinates = false;
         this.origin_in_center = false;
     }
@@ -40,22 +39,20 @@ export class Drawable implements Object2D {
      * Called before the object is rendered
      */
     onRender(){         
-        this.ctx = ctx;
-
         if (this.origin_in_center) {
-            this.ctx.translate(-(this.origin.scale.x/2),-(this.origin.scale.y/2));
+            ctx.translate(-(this.origin.scale.x/2),-(this.origin.scale.y/2));
         }
-        this.ctx.translate(this.origin.position.x,this.origin.position.y);
+        ctx.translate(this.origin.position.x,this.origin.position.y);
             
         if (this.origin_in_center) {
-            this.ctx.translate(this.origin.scale.x/2,this.origin.scale.y/2);
+            ctx.translate(this.origin.scale.x/2,this.origin.scale.y/2);
         }        
-           this.ctx.rotate(this.origin.rotation * Math.PI / 180);
+           ctx.rotate(this.origin.rotation * Math.PI / 180);
             
         if (this.origin_in_center) {
-            this.ctx.translate(-(this.origin.scale.x/2),-(this.origin.scale.y/2));
+            ctx.translate(-(this.origin.scale.x/2),-(this.origin.scale.y/2));
         }    
-        this.ctx.scale(this.origin.scale.x,this.origin.scale.y);      
+        ctx.scale(this.origin.scale.x,this.origin.scale.y);      
 
         
     }
@@ -67,7 +64,7 @@ export class Drawable implements Object2D {
     afterRender(){        
         this.children.forEach(child => {
             if (child instanceof Drawable && !child.use_local_coordinates)
-                this.ctx.scale(1/this.origin.scale.x,1/this.origin.scale.y);
+                ctx.scale(1/this.origin.scale.x,1/this.origin.scale.y);
             
             child.onRender();
         });
@@ -76,7 +73,6 @@ export class Drawable implements Object2D {
 
     origin: Transform;    
     children: Array<Object2D>;
-    ctx: CanvasRenderingContext2D;
     use_local_coordinates: boolean;
     origin_in_center: boolean;
 }
