@@ -13,7 +13,7 @@ export class Vector2  {
             Math.pow(this.x,2) + Math.pow(this.y,2)
             )
     }
-
+    
     normalized(){
         let newVector = new Vector2(this.x,this.y);
         let lenght = newVector.lenght()
@@ -22,6 +22,7 @@ export class Vector2  {
 
         return newVector;
     }
+
 
     x:number;
     y:number;

@@ -63,10 +63,14 @@ export class Drawable implements Object2D {
      */
     afterRender(){        
         this.children.forEach(child => {
-            if (child instanceof Drawable && !child.use_local_coordinates)
-                ctx.scale(1/this.origin.scale.x,1/this.origin.scale.y);
-            
-            child.onRender();
+            ctx.save();
+
+                if (child instanceof Drawable && !child.use_local_coordinates)
+                    ctx.scale(1/this.origin.scale.x,1/this.origin.scale.y);
+                
+                child.onRender();
+
+            ctx.restore();
         });
     }
 
